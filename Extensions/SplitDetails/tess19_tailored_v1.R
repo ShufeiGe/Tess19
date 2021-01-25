@@ -2,10 +2,14 @@
   if(l.max==Inf){
     l.max <- dim(xyz)[1]
   }
-  split.seed=123 #set the seed you want to use 
+  split.seed=123 #set the seed you want to use
+   
   cut.type = 1
-   ALPHA = 1/10000 
+ 
+   ALPHA = 1/10000
+  
    # l.max=4  # set to 10 for test (max number of cut allowed)
+
 if (split.seed == -1) {
   split.seed = as.integer((as.double(Sys.time())*1000+Sys.getpid()) %% 2^31)
   set.seed(split.seed)
@@ -14,10 +18,17 @@ tau=Inf
 sample.type=1
 accept.rate.min=0.05
 # N=200 #number of particles 
-rep.max=1 #number of trees 
-w.normal = NULL 
+rep.max=1 #number of trees
+
+ 
+w.normal = NULL
+ 
+
+ 
 suppressMessages(library(purrr)    )
+
 cat(sprintf('Loading data.\n'))
+ 
 V.all <-  as.matrix(xyz) #*****
 if(l.max==Inf){
   l.max=dim(data)[1]
@@ -30,8 +41,8 @@ rm("min","max")
 
  
 V.label <- group #*****
-id=which(V.label==-1)
-V.label[id]<-2
+#id=which(V.label==-1)
+#V.label[id]<-2
 id.test <- which(is.na(V.label)) #****
 V.label[id.test]<- NA #set the unknow labels as NA; otherwise, they will be grouped as a new group.
 group <- as.factor(V.label)
@@ -417,12 +428,12 @@ for(rep in 1:rep.max){
          
         partition.temp <- Partition.t[[i]]
         Out.temp <- Generative_Process(partition.temp,V.all,V.label,tau,group.level,group.len,sample.type,cut.type,accept.rate.min,w.normal)
-        Cut.len.seg <- length(Out.temp$partition$Polytopes)-1
-        Cut.all[[i]][[Cut.len.seg]] <- Out.temp$Cut #****
+ 
          
         
         if(Out.temp$cut.indx){
-         
+          Cut.len.seg <- length(Out.temp$partition$Polytopes)-1
+          Cut.all[[i]][[Cut.len.seg]] <- Out.temp$Cut #****
           cbg.new <- sapply(Out.temp$partition$Polytopes, "[[", 3)  
           multi.beta.a <- apply(cbg.new,2, (function(x){x+alpha0}))
           logl.t[i] <- sum(lgamma(multi.beta.a))-sum(lgamma(apply(multi.beta.a,2,sum)))-dim(cbg.new)[2]*(sum(lgamma(alpha0))-lgamma(sum(alpha0)))
@@ -436,12 +447,10 @@ for(rep in 1:rep.max){
             while(i.rep<10){
               Out.temp <- Generative_Process(partition.temp,V.all,V.label,tau,group.level,group.len,sample.type,cut.type,accept.rate.min,w.normal)
                
-              Cut.len.seg <- length(Out.temp$partition$Polytopes)-1
-              Cut.all[[i]][[Cut.len.seg]] <- Out.temp$Cut #****
-               
-              
               i.rep <- i.rep+1
               if(Out.temp$cut.indx){
+                Cut.len.seg <- length(Out.temp$partition$Polytopes)-1
+                Cut.all[[i]][[Cut.len.seg]] <- Out.temp$Cut #****
                 cbg.new <- sapply(Out.temp$partition$Polytopes, "[[", 3)  
                 multi.beta.a <- apply(cbg.new,2, (function(x){x+alpha0}))
                 logl.t[i] <- sum(lgamma(multi.beta.a))-sum(lgamma(apply(multi.beta.a,2,sum)))-dim(cbg.new)[2]*(sum(lgamma(alpha0))-lgamma(sum(alpha0)))
@@ -526,7 +535,3 @@ label.predict.all <- as.matrix(t(na.omit(t(label.predict.all))))
 label.predict.RF  <- apply(label.predict.all,1,getmode)
 
 cat(sprintf("\r\033[K\033[K\r\nDone.\n"))
- 
-
-
- 
