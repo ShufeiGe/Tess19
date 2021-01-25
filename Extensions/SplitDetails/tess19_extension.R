@@ -2,14 +2,10 @@
   if(l.max==Inf){
     l.max <- dim(xyz)[1]
   }
-  split.seed=123 #set the seed you want to use
-   
+  split.seed=123 #set the seed you want to use 
   cut.type = 1
- 
-   ALPHA = 1/10000
-  
+   ALPHA = 1/10000 
    # l.max=4  # set to 10 for test (max number of cut allowed)
-
 if (split.seed == -1) {
   split.seed = as.integer((as.double(Sys.time())*1000+Sys.getpid()) %% 2^31)
   set.seed(split.seed)
@@ -18,17 +14,10 @@ tau=Inf
 sample.type=1
 accept.rate.min=0.05
 # N=200 #number of particles 
-rep.max=1 #number of trees
-
- 
-w.normal = NULL
- 
-
- 
+rep.max=1 #number of trees 
+w.normal = NULL 
 suppressMessages(library(purrr)    )
-
 cat(sprintf('Loading data.\n'))
- 
 V.all <-  as.matrix(xyz) #*****
 if(l.max==Inf){
   l.max=dim(data)[1]
