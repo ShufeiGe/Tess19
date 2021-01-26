@@ -15,7 +15,7 @@ This software requires the following R packages: optparse, purrr. This software 
 ## Citation
 If you use Tess19 in your research, please cite the following publication:
 
-S. Ge, S. Wang, Y.W. Teh, L. Wang, and L.T. Elliott. Random tessellation forests. 2019. Proceedings of the 33rd Conference on Neural Information Processing Systems. Code & Appendices
+S. Ge, S. Wang, Y.W. Teh, L. Wang, and L.T. Elliott. Random tessellation forests. 2019. Proceedings of the 33rd Conference on Neural Information Processing Systems.
 
 ## LICENSES
 tess19 v1.0. Copyright (c) 2019. Shufei Ge and Lloyd T. Elliott.
