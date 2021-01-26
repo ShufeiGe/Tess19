@@ -6,7 +6,7 @@
 # Citation
 If you use tess19_tailored_v1.R in your research, please cite the following publication:
 
-S. Ge, S. Wang, Y.W. Teh, L. Wang, and L.T. Elliott. *Random tessellation forests*. 2019. Proceedings of the 33rd Conference on Neural Information Processing Systems. Code & Appendices
+S. Ge, S. Wang, Y.W. Teh, L. Wang, and L.T. Elliott. *Random tessellation forests*. 2019. Proceedings of the 33rd Conference on Neural Information Processing Systems. 
 
 
 # Help
