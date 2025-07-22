@@ -10,7 +10,7 @@ S. Ge, S. Wang, Y.W. Teh, L. Wang, and L.T. Elliott. *Random tessellation forest
 
 
 # Help
-Please send bugs, feature requests and comments to geshf@shanghaitech.edu.cn or shufeig@sfu.ca.
+Please send bugs, feature requests and comments to geshf@shanghaitech.edu.cn.
 
 # Liciense
 See liciense of the tess19 software for the license.
